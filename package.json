@@ -10,7 +10,8 @@
   "dependencies": {
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "@vercel/og": "0.8.0"
   },
   "devDependencies": {
     "typescript": "^5.4.5",
