@@ -6,9 +6,29 @@ export default async function handler() {
   const release = new Date('2025-07-22T00:00:00+02:00')
   const now = new Date()
   const diff = release.getTime() - now.getTime()
+
   if (diff <= 0) {
-    return new ImageResponse('🎉 It’s out!', { width: 1200, height: 630 })
+    return new ImageResponse(
+      <div style={{
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: 'black',
+        color: 'white',
+        fontSize: 80,
+        fontFamily: 'Segoe UI, sans-serif',
+      }}>
+        🎉 It’s out!
+      </div>,
+      {
+        width: 1200,
+        height: 630,
+      }
+    )
   }
+
   const d = Math.floor(diff / 86400000)
   const h = Math.floor((diff / 3600000) % 24)
   const m = Math.floor((diff / 60000) % 60)
