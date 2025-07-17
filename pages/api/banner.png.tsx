@@ -18,48 +18,38 @@ export default async function handler() {
         style={{
           width: '1200px',
           height: '630px',
-          backgroundColor: '#0f1014',
+          backgroundColor: '#000000',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
           justifyContent: 'center',
+          alignItems: 'center',
           fontFamily: 'Segoe UI, sans-serif',
-          color: '#ffffff',
+          color: '#ff0000',
+          padding: 40,
         }}
       >
-        {/* Logo Horde + Nom Serveur */}
         <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 20,
-          marginBottom: 40,
-        }}>
-          <img
-            src="https://www.shareicon.net/data/128x128/2015/12/31/225979_horde_256x256.png"
-            width={64}
-            height={64}
-            alt="Horde Logo"
-          />
-          <div style={{ fontSize: 28, color: '#aaa' }}>
-            Gehennas EU – Horde
-          </div>
-        </div>
-
-        {/* Nom Guilde */}
-        <div style={{
-          fontSize: 44,
+          fontSize: 48,
           fontWeight: 'bold',
-          marginBottom: 40,
+          marginBottom: 30,
+          color: '#ff2d2d',
+          textShadow: '0 0 8px #ff0000',
         }}>
           &lt;Raid Tisane et Dodo&gt;
         </div>
 
-        {/* Compte à rebours */}
+        <div style={{
+          fontSize: 32,
+          marginBottom: 30,
+          color: '#ff4d4d',
+        }}>
+          Gehennas EU – Horde
+        </div>
+
         <div style={{
           display: 'flex',
           gap: '60px',
-          color: '#2dfc95',
-          textShadow: '0 0 15px #2dfc95',
+          textShadow: '0 0 15px #00ff88',
         }}>
           {[
             { value: d, label: 'Days' },
@@ -68,15 +58,22 @@ export default async function handler() {
             { value: s.toString().padStart(2, '0'), label: 'Seconds' }
           ].map(({ value, label }) => (
             <div key={label} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 80, fontWeight: 'bold' }}>{value}</div>
-              <div style={{ fontSize: 24, marginTop: 10, color: '#ccc' }}>{label}</div>
+              <div style={{
+                fontSize: 80,
+                fontWeight: 'bold',
+                color: '#00ff88',
+              }}>{value}</div>
+              <div style={{ fontSize: 24, color: '#ffffff' }}>{label}</div>
             </div>
           ))}
         </div>
 
-        {/* Date de sortie */}
-        <div style={{ marginTop: 40, fontSize: 22, color: '#777' }}>
-          Sortie : 22 juillet 2025 à 00:00 (CEST)
+        <div style={{
+          marginTop: 40,
+          fontSize: 24,
+          color: '#888',
+        }}>
+          Sortie prévue : 22 juillet 2025 à 00:00 (CEST)
         </div>
       </div>
     ),
