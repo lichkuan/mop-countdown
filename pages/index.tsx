@@ -1,59 +1,77 @@
-// pages/index.tsx
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [timeLeft, setTimeLeft] = useState(getTimeRemaining())
+  const [timeLeft, setTimeLeft] = useState('')
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(getTimeRemaining())
+    const interval = setInterval(() => {
+      const release = new Date('2025-07-22T00:00:00+02:00')
+      const now = new Date()
+      const diff = release.getTime() - now.getTime()
+
+      if (diff <= 0) {
+        setTimeLeft("C'est parti ! 🎉")
+        clearInterval(interval)
+        return
+      }
+
+      const d = Math.floor(diff / 86400000)
+      const h = Math.floor((diff / 3600000) % 24)
+      const m = Math.floor((diff / 60000) % 60)
+      const s = Math.floor((diff / 1000) % 60)
+
+      setTimeLeft(`${d}j ${h}h ${m}m ${s}s`)
     }, 1000)
-    return () => clearInterval(timer)
+
+    return () => clearInterval(interval)
   }, [])
-
-  function getTimeRemaining() {
-    const release = new Date('2025-07-22T00:00:00+02:00')
-    const now = new Date()
-    const diff = release.getTime() - now.getTime()
-
-    const total = Math.max(diff, 0)
-    const d = Math.floor(total / (1000 * 60 * 60 * 24))
-    const h = Math.floor((total / (1000 * 60 * 60)) % 24)
-    const m = Math.floor((total / (1000 * 60)) % 60)
-    const s = Math.floor((total / 1000) % 60)
-
-    return { d, h, m, s }
-  }
 
   return (
     <div style={{
-      backgroundColor: 'black',
-      color: 'white',
-      minHeight: '100vh',
+      height: '100vh',
+      backgroundColor: '#000',
+      color: '#fff',
+      fontFamily: 'Segoe UI, sans-serif',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      fontFamily: 'Segoe UI, sans-serif',
+      padding: '20px',
       textAlign: 'center',
-      padding: '20px'
+      backgroundImage: 'url(https://cdn.wallpapersafari.com/88/37/HMCsG4.jpg)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
     }}>
-      <h1 style={{ color: 'red', fontSize: '2.5rem' }}>
-        &lt;Raid Tisane et Dodo&gt;
-      </h1>
-      <h2 style={{ color: '#ccc', marginBottom: '30px' }}>
-        Gehennas EU – Horde
-      </h2>
-      <div style={{
-        fontSize: '3rem',
-        fontWeight: 'bold',
-        color: 'lime',
-        marginBottom: '20px'
+      <img
+        src="https://e1.pngegg.com/pngimages/922/827/png-clipart-world-of-warcraft-horde-red-logo-thumbnail.png"
+        alt="Horde Logo"
+        style={{ width: '100px', marginBottom: '20px' }}
+      />
+      <h1 style={{
+        fontSize: '48px',
+        color: 'gold',
+        marginBottom: '20px',
+        textShadow: '2px 2px 4px #000'
       }}>
-        {timeLeft.d}d {timeLeft.h}h {timeLeft.m}m {timeLeft.s}s
+        Mists of Pandaria arrive dans
+      </h1>
+
+      <div style={{
+        fontSize: '64px',
+        color: 'limegreen',
+        fontWeight: 'bold',
+        textShadow: '2px 2px 10px #0f0'
+      }}>
+        {timeLeft}
       </div>
-      <div style={{ color: '#aaa' }}>
-        Sortie : 22 juillet 2025 à 00:00 (CEST)
+
+      <div style={{
+        marginTop: '40px',
+        fontSize: '28px',
+        color: 'red',
+        textShadow: '2px 2px 6px #800'
+      }}>
+        Guilde <strong style={{ color: 'white' }}>&lt;Raid Tisane et Dodo&gt;</strong> – Gehennas EU Horde
       </div>
     </div>
   )
