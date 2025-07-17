@@ -42,11 +42,6 @@ export default function Home() {
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }}>
-      <img
-        src="https://e1.pngegg.com/pngimages/922/827/png-clipart-world-of-warcraft-horde-red-logo-thumbnail.png"
-        alt="Horde Logo"
-        style={{ width: '100px', marginBottom: '20px' }}
-      />
       <h1 style={{
         fontSize: '48px',
         color: 'gold',
