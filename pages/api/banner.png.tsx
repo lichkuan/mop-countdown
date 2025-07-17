@@ -35,7 +35,7 @@ export default async function handler() {
           marginBottom: 40,
         }}>
           <img
-            src="https://e1.pngegg.com/pngimages/922/827/png-clipart-world-of-warcraft-horde-red-logo-thumbnail.png"
+            src="https://www.shareicon.net/data/128x128/2015/12/31/225979_horde_256x256.png"
             width={64}
             height={64}
             alt="Horde Logo"
